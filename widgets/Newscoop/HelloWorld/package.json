@@ -1,0 +1,21 @@
+{
+    "name": "HelloWorld",
+    "version": "0.0.1",
+    "title": "Hello World widget",
+    "author": {
+        "name": "Paweł Mikołajczuk",
+        "email": "pawel.mikolajczuk@sourcefabric.org"
+    },
+    "licenses": [
+        {
+            "type": "GPL",
+            "url": "http://www.opensource.org/licenses/gpl-license.php"
+        }
+    ],
+    "description": "Show new Widgets system full power!",
+    "keywords": [
+        "widget",
+        "example"
+    ],
+    "homepage": "https://github.com/ahilles107/HelloWorldNewscoopWidget"
+}
