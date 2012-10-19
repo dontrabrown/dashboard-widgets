@@ -12,14 +12,14 @@ use Newscoop\Widgets\Widget;
 /**
  * HelloWorld widget
  */
-class HelloWorld extends Widget
+class HelloWorldWidget extends Widget
 {
     public function getDefaultController()
     {
         // return default controller name
         // can be set in config
 
-        return 'Newscoop\HelloWorld\Controller\HelloWorldController';
+        return '\Newscoop\HelloWorld\Controller\HelloWorldController';
     } 
 
     public function getDefaultAction()
