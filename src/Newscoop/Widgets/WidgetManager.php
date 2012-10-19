@@ -33,11 +33,26 @@ class WidgetManager
 
     public function getAvailableWidgets()
     {
-        // get all widget in "widgets" directory
+        // get all widgets in "widgets" directory
     }
 
     public function addWidget()
     {
         // add new widget to user widget list
+    }
+
+    public function getWidgetsByContext($context)
+    {
+        // get widgets by context
+    }
+
+    public function setWidgetsByContext($context, array $widgets)
+    {
+        // set widgets by context
+    }
+
+    public function addWidgetToContext($context, $widget)
+    {
+        // add widget to conext
     }
 }

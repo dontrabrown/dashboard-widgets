@@ -9,6 +9,9 @@
 
 namespace Newscoop\Widgets;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 /**
  * Widget Manager
  */
@@ -16,8 +19,12 @@ class WidgetRenderer
 {
     private $renderer;
 
-    public function __construct()
-    {}
+    private $widget;
+
+    public function __construct($widget)
+    {
+        $this->widget = $widget;
+    }
 
     public function setRenderer($render)
     {   
@@ -32,13 +39,21 @@ class WidgetRenderer
     }
 
     /**
-     *  get renderer 
-     *  get layout
-     *  pass widget data to layout
-     *  pass default controller result to layout
      * 
-     *  return layout with content from default controller
      */
     public function render()
-    {}
+    {
+        $defaultControler = $this->widget->getDefaultController();
+        $defaultAction = $this->widget->getDefaultAction(); 
+        $request = Request::createFromGlobals();
+
+        $response = call_user_func_array(array(new $defaultControler, $defaultAction), array($request));
+        
+
+        // get renderer
+        // get layout
+        // pass widget data to layout
+        // pass default controller result to layout
+        // return layout with content from default controller
+    }
 }

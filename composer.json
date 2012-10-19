@@ -11,14 +11,15 @@
         "symfony/routing": "2.1.x-dev",
         "symfony/config": "2.1.*",
         "symfony/http-kernel": "2.1.*",
+        "symfony/finder": "2.1.*",
         "symfony/http-foundation": "2.1.*",
         "symfony/event-dispatcher": "2.1.*",
-        "symfony/yaml": "2.1.*"
+        "symfony/yaml": "2.1.*",
+        "twig/twig": "1.*"
     },
     "autoload": {
         "psr-0": {
-            "Newscoop": "src",
-            "Newscoop": "widgets"
+            "Newscoop": ["src", "widgets"]
         }
     }
 }
