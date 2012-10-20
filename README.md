@@ -13,14 +13,23 @@ Goals:
 * Fully namespaced code
 * Simple interface to manage your widgets (per user or per predefined contexts)
 
-As base we use Symfony2 components like:
+As base we use components like:
 
-* Routing
-* Config
-* Http-kernel
-* Http-foundation
-* Event-dispatcher
-* Yaml
+* Symfony/Routing
+* Symfony/Config
+* Symfony/Http-Kernel
+* Symfony/Http-Foundation
+* Symfony/Finder
+* Symfony/Event-Dispatcher
+* Symfony/Yaml
+* Twig/Twig
+
+Where widgets lives?
+
+Like any other amazing php stuff, widgets lives in their repositories on Github.
+And like rest of best ever libraries they have composer.json file and are listed on Packagist.
+
+How to install widgets
 
 TODO:
 

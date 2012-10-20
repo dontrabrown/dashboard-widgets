@@ -36,19 +36,24 @@ class WidgetReader
         foreach ($elements as $element) {
             if (count($elements) > 0) {
                 $vendorName = $element->getFileName();
-            }
 
-            $secondFinder = new Finder();  
-            $directories = $secondFinder->depth('== 0')->in($element->getPathName());
-            foreach ($directories as $directory) { 
-                $widgetName = $directory->getFileName();
-                $class = $vendorName.'\\'.$widgetName.'\\'.$widgetName.'Widget';
-                if (class_exists($class)) {
-                    $widgets[$class] = new $class;
+                $secondFinder = new Finder();  
+                $directories = $secondFinder->depth('== 0')->in($element->getPathName());
+                foreach ($directories as $directory) { 
+                    $widgetName = $directory->getFileName();
+                    $class = $vendorName.'\\'.$widgetName.'\\'.$widgetName.'Widget';
+                    if (class_exists($class)) {
+                        $widgets[$class] = new $class;
+                    }
                 }
             }
         }
 
         return $widgets;
+    }
+
+    public function registerRoutings()
+    {
+        // register controller routings.
     }
 }
