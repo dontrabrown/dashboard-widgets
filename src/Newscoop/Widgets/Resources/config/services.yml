@@ -1,0 +1,6 @@
+parameters:
+    widgets.view.templates_dir: "widgets"
+
+services:
+    dispatcher:
+        class:     Symfony\Component\EventDispatcher\EventDispatcher

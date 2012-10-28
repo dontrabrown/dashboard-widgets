@@ -17,9 +17,13 @@ class WidgetReader
 {
     private $widgetsDirectory;
 
-    public function __construct($widgetsDirectory)
+    public function __construct($widgetsDirectory = null)
     {
-        $this->widgetsDirectory = __DIR__ . '/../../../widgets';
+        if ($widgetsDirectory) {
+            $this->widgetsDirectory = $widgetsDirectory;
+        } else {
+            $this->widgetsDirectory = __DIR__ . '/../../../widgets';
+        }
     }
 
     public function getWidgetsDirectory()

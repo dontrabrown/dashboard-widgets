@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpKernel\EventListener\RouterListener;
-use Symfony\Component\HttpKernel\Controller\ControllerResolver;
+use Newscoop\Widgets\Controller\ControllerResolver;
 
 $closure = function() {
     $routes = new RouteCollection();
@@ -29,16 +29,16 @@ $closure = function() {
 $loader = new ClosureLoader();
 $collection = $loader->load($closure);
 
+$containerFactory = new \Newscoop\Widgets\Container\ContainerFactory();
+$container = $containerFactory->getContainer();
+
 $request = Request::createFromGlobals();
 $context = new RequestContext();
 $context->fromRequest($request);
 $matcher = new UrlMatcher($collection, $context);
 
-$dispatcher = new EventDispatcher();
+$dispatcher = $container->get('dispatcher');
 $dispatcher->addSubscriber(new RouterListener($matcher));
 
-$resolver = new ControllerResolver();
-
-$kernel = new HttpKernel($dispatcher, $resolver);
-
+$kernel = new HttpKernel($dispatcher, new ControllerResolver($container));
 $kernel->handle($request)->send();

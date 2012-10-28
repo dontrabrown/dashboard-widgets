@@ -1,5 +1,5 @@
 {
-    "hash": "2c0fde97d5f5e887fb6a4ec4287d0780",
+    "hash": "961058bb13930008ed16ae3e72b4115a",
     "packages": [
         {
             "name": "newscoop/dashboard-widgets-installer",
@@ -7,15 +7,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ahilles107/newscoop-dashboard-widget-installer",
-                "reference": "e3ce096f21466cea59aeba7c423465c8f5b15ac1"
+                "reference": "a3200bfa4692b786d713ab9e1d79d026717feb4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/ahilles107/newscoop-dashboard-widget-installer/zipball/e3ce096f21466cea59aeba7c423465c8f5b15ac1",
-                "reference": "e3ce096f21466cea59aeba7c423465c8f5b15ac1",
+                "url": "https://github.com/ahilles107/newscoop-dashboard-widget-installer/zipball/a3200bfa4692b786d713ab9e1d79d026717feb4a",
+                "reference": "a3200bfa4692b786d713ab9e1d79d026717feb4a",
                 "shasum": ""
             },
-            "time": "1350759150",
+            "time": "1350761567",
             "type": "composer-installer",
             "extra": {
                 "class": "Newscoop\\Composer\\WidgetInstaller"
@@ -39,28 +39,27 @@
         {
             "name": "newscoop/hello-world-widget",
             "version": "dev-master",
+            "target-dir": "Newscoop/HelloWorld",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ahilles107/hello-world-dashboard-widget",
-                "reference": "38460c6e00798c4d18d89a02bc19513a35e46d2f"
+                "reference": "448016b0c330b808c7600a655470140514a76729"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/ahilles107/hello-world-dashboard-widget/zipball/38460c6e00798c4d18d89a02bc19513a35e46d2f",
-                "reference": "38460c6e00798c4d18d89a02bc19513a35e46d2f",
+                "url": "https://github.com/ahilles107/hello-world-dashboard-widget/zipball/448016b0c330b808c7600a655470140514a76729",
+                "reference": "448016b0c330b808c7600a655470140514a76729",
                 "shasum": ""
             },
             "require": {
                 "newscoop/dashboard-widgets-installer": "*"
             },
-            "time": "1350759355",
+            "time": "1350761199",
             "type": "newscoop-dashboard-widget",
             "installation-source": "source",
             "autoload": {
                 "psr-0": {
-                    "Newscoop": [
-                        "widgets"
-                    ]
+                    "Newscoop\\HelloWorld": ""
                 }
             },
             "authors": [
@@ -116,6 +115,61 @@
                 }
             ],
             "description": "Symfony Config Component",
+            "homepage": "http://symfony.com"
+        },
+        {
+            "name": "symfony/dependency-injection",
+            "version": "v2.1.2",
+            "target-dir": "Symfony/Component/DependencyInjection",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/DependencyInjection",
+                "reference": "v2.1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/DependencyInjection/zipball/v2.1.2",
+                "reference": "v2.1.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/yaml": "2.1.*",
+                "symfony/config": "2.1.*"
+            },
+            "suggest": {
+                "symfony/yaml": "2.1.*",
+                "symfony/config": "2.1.*"
+            },
+            "time": "2012-09-17 13:41:57",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\DependencyInjection": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony DependencyInjection Component",
             "homepage": "http://symfony.com"
         },
         {
@@ -493,8 +547,8 @@
     "aliases": [
 
     ],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "symfony/routing": 20
-    }
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ]
 }

@@ -1,6 +1,7 @@
 {
-    "name": "Newscoop/Widgets",
+    "name": "newscoop/widgets",
     "description": "Newscoop dashboard widgets system",
+    "license": "MIT",
     "authors": [
         {
             "name": "Pawel Mikolajczuk",
@@ -8,12 +9,13 @@
         }
     ],
     "require": {
-        "symfony/routing": "2.1.x-dev",
         "symfony/config": "2.1.*",
-        "symfony/http-kernel": "2.1.*",
+        "symfony/dependency-injection": "2.1.*",
+        "symfony/event-dispatcher": "2.1.*",
         "symfony/finder": "2.1.*",
         "symfony/http-foundation": "2.1.*",
-        "symfony/event-dispatcher": "2.1.*",
+        "symfony/http-kernel": "2.1.*",
+        "symfony/routing": "2.1.*",
         "symfony/yaml": "2.1.*",
         "twig/twig": "1.*",
         "newscoop/hello-world-widget": "*"
@@ -22,6 +24,5 @@
         "psr-0": {
             "Newscoop": ["src"]
         }
-    },
-    "minimum-stability" : "dev"
+    }
 }
