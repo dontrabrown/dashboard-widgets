@@ -29,6 +29,7 @@ $closure = function() {
 $loader = new ClosureLoader();
 $collection = $loader->load($closure);
 
+// set dashboard and widgets directory location in parameters
 $containerFactory = new \Newscoop\Widgets\Container\ContainerFactory();
 $container = $containerFactory->getContainer();
 
