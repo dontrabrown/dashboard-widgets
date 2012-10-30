@@ -29,7 +29,7 @@ This library is based on Petr Jasek code form [Newscoop][3].
 
 # Widgets
 
-#### Where widgets lives?
+#### Where widget lives?
 
 Like any other amazing php stuff, widgets lives in their repositories on Github.
 And like rest of best ever libraries they have composer.json file and are listed on Packagist.
