@@ -47,6 +47,7 @@ Just find it on packagist and add to composer require section.
 
 ## System elements:
 
+* [Dashboard for widgets][4]
 * [Composer widgets installer] [1]
 * [Sample Hello World widget] [2]
 
@@ -65,3 +66,4 @@ Just find it on packagist and add to composer require section.
 [1]: https://github.com/ahilles107/newscoop-dashboard-widget-installer
 [2]: https://github.com/ahilles107/hello-world-dashboard-widget
 [3]: https://github.com/sourcefabric/Newscoop
+[4]: https://github.com/ahilles107/dashboard-widgets-dashboard

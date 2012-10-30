@@ -23,5 +23,6 @@
         "psr-0": {
             "Newscoop": ["src"]
         }
-    }
+    },
+    "target-dir": "Newscoop/Widgets"
 }
