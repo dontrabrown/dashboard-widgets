@@ -1,7 +1,9 @@
-Newscoop Widgets
+Dashboard Widgets
 ================
 
-This library is based on Petr Jasek code form Newscoop.
+Dashboard Widgets system builded on top of Symfony components. Allow 3d party developer to build widets for your application dashboard. Each widgets can have controllers, views, entities, each widget must have repository and can be installed with Composer.
+
+This library is based on Petr Jasek code form [Newscoop][3].
 
 ## Goals:
 
@@ -43,6 +45,11 @@ Just find it on packagist and add to composer require section.
         "newscoop/dashboard-widgets-installer": "*"
     }
 
+## System elements:
+
+* [Composer widgets installer] [1]
+* [Sample Hello World widget] [2]
+
 ## TODO:
 
 * Load widgets routings from widget Resources/config/routing.yml
@@ -54,3 +61,7 @@ Just find it on packagist and add to composer require section.
  * settings management
 * Add doctrine entity manager into container
 * Widget Manager (manage widgets per user or per context)
+
+[1]: https://github.com/ahilles107/newscoop-dashboard-widget-installer
+[2]: https://github.com/ahilles107/hello-world-dashboard-widget
+[3]: https://github.com/sourcefabric/Newscoop
