@@ -1,5 +1,5 @@
 {
-    "name": "newscoop/widgets",
+    "name": "newscoop/dashboard-widgets",
     "description": "Newscoop dashboard widgets system",
     "license": "MIT",
     "authors": [
@@ -17,8 +17,7 @@
         "symfony/http-kernel": "2.1.*",
         "symfony/routing": "2.1.*",
         "symfony/yaml": "2.1.*",
-        "twig/twig": "1.*",
-        "newscoop/hello-world-widget": "*"
+        "twig/twig": "1.*"
     },
     "autoload": {
         "psr-0": {
