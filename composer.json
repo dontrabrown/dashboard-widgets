@@ -21,8 +21,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Newscoop": ["src"]
+            "Newscoop/Widgets": ["src"]
         }
-    },
-    "target-dir": "Newscoop/Widgets"
+    }
 }
