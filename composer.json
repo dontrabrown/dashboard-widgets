@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "php": ">=5.3.3",
         "symfony/config": "2.1.*",
         "symfony/dependency-injection": "2.1.*",
         "symfony/event-dispatcher": "2.1.*",
@@ -21,7 +22,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Newscoop\\Widgets": ["src"]
+            "Newscoop\\Widgets": ""
         }
-    }
+    },
+    "target-dir": "Newscoop/Widgets",
 }
