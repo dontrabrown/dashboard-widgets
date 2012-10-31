@@ -58,27 +58,24 @@ class ControllerResolver extends BaseControllerResolver
             $controller->setContainer($this->container);
         }
 
-        if ($this->container->has('view')) {
-            $view = $this->container->get('view');
+        if ($this->container->has('dashboard.view')) {
+            $view = $this->container->get('dashboard.view');
             $loader = $view->getLoader();
-            if ($path = $this->getViewsPath($controller)) {
+
+            if ($path = $this->getViewsPath($controller, $this->container->getParameter('dashboard.widgets_dir'))) {
                 $loader->addPath($path);
                 $view->setLoader($loader);
                 $this->container->set('view', $view);
             }
         }
 
-        /// if $this->container->has('view') get loader (getLoader from view)  
-        //  then parse controller path (get vendor and widget name) and add vendor/widget/Resources/views for loader 
-        //  if directory exists.
-
         return array($controller, $method);
     }
 
-    private function getViewsPath($controller) {
+    private function getViewsPath($controller, $widgetsDir) {
         $elements = explode('\\', get_class($controller));
         if (count($elements == 4)) {
-            $path = __DIR__ . '/../../../../widgets/' . $elements[0] . '/' . $elements[1] . '/Resources/views';
+            $path = $widgetsDir .'/'. $elements[0] . '/' . $elements[1] . '/Resources/views';
 
             if (is_dir($path)) {
                 return $path;

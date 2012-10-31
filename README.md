@@ -53,8 +53,7 @@ Just find it on packagist and add to composer require section.
 
 ## TODO:
 
-* Load widgets routings from widget Resources/config/routing.yml
-* Create base layout for widgets dashboard (maybe use silex app for creating dashboard)
+* Create base layout for widgets dashboard
 * Load metadata from configuration into widget object (maybe add BaseWidget class for keeping this data)
 * Create layout for single widget container
 * Create JavaScript library for:

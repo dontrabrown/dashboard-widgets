@@ -15,14 +15,11 @@ use Symfony\Component\Finder\Finder;
 class WidgetReader
 {
     private $widgetsDirectory;
+    private $widgetsMeta = array();
 
-    public function __construct($widgetsDirectory = null)
+    public function __construct($widgetsDirectory)
     {
-        if ($widgetsDirectory) {
-            $this->widgetsDirectory = $widgetsDirectory;
-        } else {
-            $this->widgetsDirectory = __DIR__ . '/../../../widgets';
-        }
+        $this->widgetsDirectory = $widgetsDirectory;
     }
 
     public function getWidgetsDirectory()
@@ -47,6 +44,11 @@ class WidgetReader
                     $class = $vendorName.'\\'.$widgetName.'\\'.$widgetName.'Widget';
                     if (class_exists($class)) {
                         $widgets[$class] = new $class;
+                        $this->widgetsMeta[$class] = array(
+                            'dir' => $this->widgetsDirectory.'/'.$vendorName.'/'.$widgetName,
+                            'vendor' => $vendorName,
+                            'widgetName' => $widgetName
+                        );
                     }
                 }
             }
@@ -55,8 +57,18 @@ class WidgetReader
         return $widgets;
     }
 
-    public function registerRoutings()
+    public function registerRoutings($routingLoader, $containerFactory)
     {
-        // register controller routings.
+        $this->findAllWidgets();
+        $routesCollection = new \Symfony\Component\Routing\RouteCollection();
+
+        foreach ($this->widgetsMeta as $key => $widget) {
+            $file = $widget['dir'].'/Resources/config/routing.yml';
+            if (file_exists($file)) {
+                $routesCollection->addCollection($routingLoader->load($file), strtolower($widget['vendor'].'_'.$widget['widgetName']));
+            }
+        }
+
+        $containerFactory->setRouter($routesCollection);
     }
 }
