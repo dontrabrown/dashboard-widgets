@@ -5,9 +5,10 @@
  * @license  For the full copyright and license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Newscoop\Widgets;
+namespace Newscoop\Widgets\Widget;
 
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Widget reader
@@ -15,7 +16,7 @@ use Symfony\Component\Finder\Finder;
 class WidgetReader
 {
     private $widgetsDirectory;
-    private $widgetsMeta = array();
+    private $widgets = array();
 
     public function __construct($widgetsDirectory)
     {
@@ -29,7 +30,6 @@ class WidgetReader
 
     public function findAllWidgets()
     {
-        $widgets = array();
         $finder = new Finder();
         $elements = $finder->depth('== 0')->in($this->widgetsDirectory);
 
@@ -41,20 +41,24 @@ class WidgetReader
                 $directories = $secondFinder->depth('== 0')->in($element->getPathName());
                 foreach ($directories as $directory) { 
                     $widgetName = $directory->getFileName();
-                    $class = $vendorName.'\\'.$widgetName.'\\'.$widgetName.'Widget';
-                    if (class_exists($class)) {
-                        $widgets[$class] = new $class;
-                        $this->widgetsMeta[$class] = array(
+                    $className = $vendorName.'\\'.$widgetName.'\\'.$widgetName.'Widget';
+                    if (class_exists($className)) {
+                        $widgetClass = new $className;
+
+                        $widgetClass->setInfo(array(
                             'dir' => $this->widgetsDirectory.'/'.$vendorName.'/'.$widgetName,
                             'vendor' => $vendorName,
                             'widgetName' => $widgetName
-                        );
+                        ));
+                        $widgetClass->setMeta($this->readMetadata($widgetClass));
+
+                        $this->widgets[$className] = $widgetClass;
                     }
                 }
             }
         }
 
-        return $widgets;
+        return $this->widgets;
     }
 
     public function registerRoutings($routingLoader, $containerFactory)
@@ -62,13 +66,33 @@ class WidgetReader
         $this->findAllWidgets();
         $routesCollection = new \Symfony\Component\Routing\RouteCollection();
 
-        foreach ($this->widgetsMeta as $key => $widget) {
-            $file = $widget['dir'].'/Resources/config/routing.yml';
+        foreach ($this->widgets as $key => $widget) {
+            $widgetInfo = $widget->getInfo();
+            $file = $widgetInfo['dir'].'/Resources/config/routing.yml';
             if (file_exists($file)) {
-                $routesCollection->addCollection($routingLoader->load($file), strtolower($widget['vendor'].'_'.$widget['widgetName']));
+                $routesCollection->addCollection($routingLoader->load($file), strtolower($widgetInfo['vendor'].'_'.$widgetInfo['widgetName']));
             }
         }
 
         $containerFactory->setRouter($routesCollection);
+    }
+
+    protected function readMetadata($widget)
+    {   
+        $meta = array();
+        $widgetInfo = $widget->getInfo();
+        $configFile = $widgetInfo['dir'] . '/Resources/config/config.yml';
+
+        if (file_exists($configFile)) {
+            $configContent = Yaml::parse($configFile);
+            if (array_key_exists($widgetInfo['widgetName'], $configContent)) {
+                $meta = $configContent[$widgetInfo['widgetName']]; 
+            }
+        }
+
+        //TODO: read metadata from annotations
+        // create metadata class
+
+        return $meta;
     }
 }
