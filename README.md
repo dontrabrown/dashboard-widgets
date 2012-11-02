@@ -1,7 +1,7 @@
 Dashboard Widgets
 ================
 
-Dashboard Widgets system builded on top of Symfony components. Allow 3d party developer to build widets for your application dashboard. Each widgets can have controllers, views, entities, each widget must have repository and can be installed with Composer.
+Dashboard Widgets component builded on top of Symfony components. Allow 3d party developer to build widets for your application dashboard. Each widgets can have controllers, views, entities, each widget must have repository and can be installed with Composer.
 
 This library is based on Petr Jasek code form [Newscoop][3].
 
@@ -54,7 +54,6 @@ Just find it on packagist and add to composer require section.
 ## TODO:
 
 * Create base layout for widgets dashboard
-* Load metadata from configuration into widget object (maybe add BaseWidget class for keeping this data)
 * Create layout for single widget container
 * Create JavaScript library for:
  * loading widget controllers content

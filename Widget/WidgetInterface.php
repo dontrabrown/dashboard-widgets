@@ -14,14 +14,8 @@ namespace Newscoop\Widgets\Widget;
 interface WidgetInterface
 {
     /**
-     * Get default controller name
+     * Get default route
      * @return void
      */
-    public function getDefaultController();
-
-    /**
-     * Get default controller action name
-     * @return void
-     */
-    public function getDefaultAction();
+    public function getDefaultRoute();
 }
