@@ -25,6 +25,19 @@ class Widget
      */
     private $meta = array();
 
+    /**
+     * @var  array widget configuration
+     */
+    private $config = array();
+
+    public function getDefaultRoute() {
+        if (count($this->config) > 0) {
+            if (array_key_exists('defaultRoute', $this->config)) {
+                return $this->config['defaultRoute'];
+            }
+        }
+    }
+
     public function setInfo($info)
     {
         $this->info = $info;
@@ -47,5 +60,17 @@ class Widget
     public function getMeta()
     {
         return $this->meta;
+    }
+
+    public function setConfig($config)
+    {
+        $this->config = $config;
+
+        return $this;
+    }
+
+    public function getConfig()
+    {
+        return $this->config;
     }
 }

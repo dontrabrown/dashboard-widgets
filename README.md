@@ -34,6 +34,8 @@ This library is based on Petr Jasek code form [Newscoop][3].
 Like any other amazing php stuff, widgets lives in their repositories on Github.
 And like rest of best ever libraries they have composer.json file and are listed on Packagist.
 
+Check [Sample Hello World widget] [2].
+
 #### How to install widgets?
 
 Just find it on packagist and add to composer require section.

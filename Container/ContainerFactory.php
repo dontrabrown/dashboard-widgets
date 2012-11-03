@@ -19,16 +19,11 @@ use Newscoop\Widgets\Routing\Router;
 class ContainerFactory
 {   
     private $container;
-
     private $cacheDir;
-    private $dashboardDir;
-    private $widgetsDir;
 
     public function __construct($dashboardDir, $cacheDir, $widgetsDir)
     {
-        $this->dashboardDir = $dashboardDir;
         $this->cacheDir = $cacheDir;
-        $this->widgetsDir = $widgetsDir;
 
         $this->container = new ContainerBuilder();
         $loader = new YamlFileLoader($this->container, new FileLocator(__DIR__ . '/../Resources/config/'));
@@ -40,26 +35,6 @@ class ContainerFactory
 
         $this->setView($dashboardDir);
         $this->setRouting($dashboardDir, $cacheDir);
-    }
-
-    private function setView($dashboardDir)
-    {
-        $loader = new \Twig_Loader_Filesystem($dashboardDir);
-
-        // TODO: add cache with env discovering 
-        // array(
-        //     'cache' => __DIR__ .'/../../../../dashboard/cache'
-        // )
-        $twig = new \Twig_Environment($loader);
-        $this->container->set('dashboard.view', $twig);
-    }
-
-    private function setRouting($dashboardDir, $cacheDir)
-    {
-        $locator = new FileLocator($dashboardDir.'/app/config/');
-        $loader = new RoutingYamlFileLoader($locator);
-
-        $this->container->set('dashboard.routing.yml_loader', $loader);
     }
 
     public function setRouter($collection){
@@ -75,5 +50,25 @@ class ContainerFactory
     public function getContainer()
     {
         return $this->container;
+    }
+
+    protected function setView($dashboardDir)
+    {
+        $loader = new \Twig_Loader_Filesystem($dashboardDir);
+
+        // TODO: add cache with env discovering 
+        // array(
+        //     'cache' => __DIR__ .'/../../../../dashboard/cache'
+        // )
+        $twig = new \Twig_Environment($loader);
+        $this->container->set('dashboard.view', $twig);
+    }
+
+    protected function setRouting($dashboardDir, $cacheDir)
+    {
+        $locator = new FileLocator($dashboardDir.'/app/config/');
+        $loader = new RoutingYamlFileLoader($locator);
+
+        $this->container->set('dashboard.routing.yml_loader', $loader);
     }
 }

@@ -51,6 +51,8 @@ class WidgetReader
                             'widgetName' => $widgetName
                         ));
                         $widgetClass->setMeta($this->readMetadata($widgetClass));
+                        $widgetClass->setConfig($this->readConfig($widgetClass));
+
 
                         $this->widgets[$className] = $widgetClass;
                     }
@@ -86,13 +88,30 @@ class WidgetReader
         if (file_exists($configFile)) {
             $configContent = Yaml::parse($configFile);
             if (array_key_exists($widgetInfo['widgetName'], $configContent)) {
-                $meta = $configContent[$widgetInfo['widgetName']]; 
+                if (array_key_exists('meta', $configContent[$widgetInfo['widgetName']])) {
+                    $meta = $configContent[$widgetInfo['widgetName']]['meta']; 
+                }
             }
         }
 
-        //TODO: read metadata from annotations
-        // create metadata class
-
         return $meta;
+    }
+
+    protected function readConfig($widget)
+    {   
+        $config = array();
+        $widgetInfo = $widget->getInfo();
+        $configFile = $widgetInfo['dir'] . '/Resources/config/config.yml';
+
+        if (file_exists($configFile)) {
+            $configContent = Yaml::parse($configFile);
+            if (array_key_exists($widgetInfo['widgetName'], $configContent)) {
+                if (array_key_exists('config', $configContent[$widgetInfo['widgetName']])) {
+                    $config = $configContent[$widgetInfo['widgetName']]['config']; 
+                }
+            }
+        }
+
+        return $config;
     }
 }
