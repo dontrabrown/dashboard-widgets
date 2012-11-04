@@ -5,6 +5,10 @@ Dashboard Widgets component builded on top of Symfony components. Allow 3d party
 
 This library is based on Petr Jasek code form [Newscoop][3].
 
+## See component in action
+
+#### [Sample Widgets Dashboard][4]
+
 ## Goals:
 
 * Quickly create simple widgets
@@ -49,7 +53,7 @@ Just find it on packagist and add to composer require section.
 
 ## System elements:
 
-* [Dashboard for widgets][4]
+* [Widgets Dashboard][4]
 * [Composer widgets installer] [1]
 * [Sample Hello World widget] [2]
 
